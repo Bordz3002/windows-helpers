@@ -13,10 +13,8 @@ class SystemInfo {
             Write-Host $content -ForegroundColor $foregroundColor -BackgroundColor $backgroundColor -NoNewline
         }
     }
-
     [void] PrintComputerInfoColored() {
         $info = Get-ComputerInfo
-
         foreach ($prop in $info.PSObject.Properties) {
             if ($null -ne $prop.Value -and $prop.Value -ne "") {
                 $this.log($prop.Name, "Green", "Black", $false)
@@ -26,7 +24,5 @@ class SystemInfo {
         }
     }
 }
-
-# instance
 $sys = [SystemInfo]::new()
 $sys.PrintComputerInfoColored()
